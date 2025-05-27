@@ -1,0 +1,38 @@
+.coin {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.coin_image {
+  width: 52px;
+}
+
+.coin_label {
+  font-weight: 500;
+  color: var(--color-foreground);
+  font-size: 24px;
+}
+
+.coin_caret {
+  margin-inline: 8px;
+}
+
+.coin_caret--rotate {
+  transform: rotate(180deg);
+}
+
+.coin_volume {
+  color: var(--color-green);
+  font-size: 18px;
+}
+
+@media (max-width: 1024px) {
+  .coin_image {
+    width: 44px;
+  }
+
+  .coin_label {
+    font-size: 18px;
+  }
+}

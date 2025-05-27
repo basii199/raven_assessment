@@ -1,11 +1,7 @@
-import Header from "@/components/organisms/header";
+import ExchangePage from "./components/pages/exchange-page";
 
 const App = () => {
-  return (
-    <div>
-      <Header />
-    </div>
-  );
+  return <ExchangePage />;
 };
 
 export default App;

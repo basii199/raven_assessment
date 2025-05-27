@@ -1,0 +1,34 @@
+.info {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  overflow-x: auto;
+}
+
+.info_group {
+  display: flex;
+  flex-direction: column;
+}
+
+.info_sub {
+  display: flex;
+  gap: 4px;
+}
+
+.info_label {
+  font-size: 12px;
+  font-weight: 500;
+  text-wrap: nowrap;
+}
+
+.info_value {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+  text-wrap: nowrap;
+  color: var(--color-foreground);
+}
+
+.info_value--green {
+  color: var(--color-green);
+}

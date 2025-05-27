@@ -1,7 +1,7 @@
 import "./vertical-rule.css";
 
-const VR = () => {
-  return <div className="vertical-rule" />;
+const VR = ({ className = "" }) => {
+  return <div className={`vertical-rule ${className}`} />;
 };
 
 export default VR;

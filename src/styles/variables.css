@@ -1,5 +1,6 @@
 :root {
   --color-background: #1c2127;
+  --color-section: #262932;
   --color-foreground: #ffffff;
   --color-secondary: #a7b1bc;
   --color-secondary-bg: #353945;
@@ -14,4 +15,6 @@
     #7847e1 47.92%,
     #dd568d 96.35%
   );
+  --border: 1px solid #32383f;
+  --transition: all 0.3s;
 }

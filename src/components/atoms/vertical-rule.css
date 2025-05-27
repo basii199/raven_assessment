@@ -3,4 +3,5 @@
   width: 1px;
   margin-inline: 40px 53px;
   background-color: var(--color-secondary-bg);
+  flex-shrink: 0;
 }
