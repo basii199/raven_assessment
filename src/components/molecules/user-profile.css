@@ -1,0 +1,52 @@
+.profile {
+  margin-left: auto;
+  display: flex;
+  gap: 16px;
+}
+
+.profile--mobile {
+  display: none;
+}
+
+.profile_card {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #12171d;
+  padding: 8px 16px;
+  border-radius: 8px;
+}
+
+.profile_card--image {
+  height: 32px;
+  width: 32px;
+}
+
+.profile_card--text {
+  white-space: nowrap;
+  overflow: hidden;
+  width: 100px;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  margin: 0;
+}
+
+.profile_button {
+  background-color: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.profile_button:hover {
+  scale: 1.05;
+}
+
+@media (max-width: 1024px) {
+  .profile--desktop {
+    display: none;
+  }
+  .profile--mobile {
+    display: flex;
+  }
+}

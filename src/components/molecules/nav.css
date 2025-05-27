@@ -1,0 +1,21 @@
+.nav {
+  display: flex;
+  gap: 48px;
+}
+
+.nav .nav_text {
+  color: var(--color-secondary);
+  font-size: 14px;
+  text-wrap: nowrap;
+}
+
+.nav .nav_text--active {
+  color: white;
+  font-weight: 500;
+}
+
+@media (max-width: 1024px) {
+  .nav {
+    display: none;
+  }
+}
