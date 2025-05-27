@@ -1,0 +1,58 @@
+.table {
+  width: 100%;
+  border-spacing: 0 4px;
+}
+
+.table_row--header {
+  height: 42px;
+}
+
+.table_cell--header {
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  width: 52px;
+  padding-inline: 10px;
+}
+
+.table_cell--header p {
+  font-size: 9px;
+}
+
+.cell--left {
+  text-align: left;
+}
+
+.table_row--body {
+  height: 28px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-foreground);
+  position: relative;
+}
+
+.table_cell--red {
+  color: var(--color-red);
+}
+
+.table_cell--green {
+  color: var(--color-green);
+}
+
+.table_cell--body {
+  padding-inline: 10px;
+}
+
+.table_overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.table_overlay--red {
+  background-color: var(--color-red-bg);
+}
+
+.table_overlay--green {
+  background-color: var(--color-green-bg);
+}

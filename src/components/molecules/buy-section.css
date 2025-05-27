@@ -1,0 +1,14 @@
+.buy_heading {
+  margin-block: 12px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 13px;
+  color: var(--color-green);
+  font-weight: 500;
+}
+
+.buy_heading--span {
+  color: white;
+}

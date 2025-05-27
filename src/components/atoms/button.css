@@ -1,0 +1,23 @@
+.button {
+  width: 100%;
+  font-size: 14px;
+  padding: 8px;
+  border-radius: 8px;
+  color: white;
+}
+
+.button--green {
+  background: var(--color-green);
+}
+
+.button--red {
+  background: var(--color-red);
+}
+
+.button--blue {
+  background: var(--color-blue);
+}
+
+.button--gradient {
+  background: var(--color-gradient);
+}

@@ -4,6 +4,7 @@ import clock from "/clock.svg";
 import arrowUp from "/arrow-up.svg";
 import arrowDown from "/arrow-down.svg";
 import chart from "/chart.svg";
+import React from "react";
 
 const data = [
   {
@@ -32,7 +33,7 @@ const CoinInfo = () => {
   return (
     <div className="info hide-scrollbar">
       {data.map(({ imgUrl, label, value }, index) => (
-        <>
+        <React.Fragment key={index}>
           <div className="info_group">
             <div className="info_sub">
               <img src={imgUrl} alt={label} />
@@ -48,7 +49,7 @@ const CoinInfo = () => {
             </p>
           </div>
           {index !== data.length - 1 && <VR />}
-        </>
+        </React.Fragment>
       ))}
     </div>
   );
