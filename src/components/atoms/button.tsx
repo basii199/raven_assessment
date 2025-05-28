@@ -18,7 +18,7 @@ const Button: React.FC<ButtonProps> = ({
         ${variant === "red" ? "button--red" : ""}
         ${variant === "blue" ? "button--blue" : ""}
         ${variant === "gradient" ? "button--gradient" : ""}        
-        `}
+        ${className}`}
       {...props}
     >
       {children}

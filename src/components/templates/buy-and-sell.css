@@ -1,5 +1,10 @@
 .bs {
   width: 255px;
+  height: fit-content;
+}
+
+.bs--full {
+  width: 100%;
 }
 
 .bs_active--green {

@@ -3,3 +3,28 @@
   flex-direction: column;
   gap: 8px;
 }
+
+.exchange-page_layout {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+.exchange-page_main-column {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.exchange-page_chart-order {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+}
+
+@media (max-width: 1024px) {
+  .desktop {
+    display: none;
+  }
+}

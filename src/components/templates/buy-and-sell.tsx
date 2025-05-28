@@ -8,12 +8,12 @@ import { useState } from "react";
 type Section = "buy" | "sell";
 type Tabs = "buy limit" | "buy market" | "stop limit";
 
-const BuyAndSell = () => {
+const BuyAndSell = ({ mobile }: { mobile?: boolean }) => {
   const [activeSection, setActiveSection] = useState<Section>("buy");
   const [activeTab, setActiveTab] = useState<Tabs>("buy limit");
 
   return (
-    <div className="order bs">
+    <div className={`order bs ${mobile ? "bs--full" : ""}`}>
       <div className="order_tabs">
         <div
           onClick={() => setActiveSection("buy")}

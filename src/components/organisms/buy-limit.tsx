@@ -13,7 +13,7 @@ const BuyLimit = () => {
       <Input label="Type" variant="dropdown" />
 
       <div className="buy-limit_group">
-        <input checked type="checkbox" name="" id="" />
+        <input defaultChecked type="checkbox" name="" id="" />
         <p>Post Only</p>
         <img src={info} alt="" />
       </div>

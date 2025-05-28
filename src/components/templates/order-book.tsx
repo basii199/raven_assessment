@@ -7,50 +7,85 @@ import OrderBookTable from "../organisms/order-book-table";
 import type { Display } from "../organisms/order-book-table";
 import { useState } from "react";
 
-const OrderBook = () => {
+const OrderBook = ({
+  mobile,
+  className,
+}: {
+  mobile?: boolean;
+  className?: string;
+}) => {
+  type Tabs = "Order Book" | "Recent Trades";
+
   const [show, setShow] = useState<Display>("both");
+  const [activeTab, setActiveTab] = useState<Tabs>("Order Book");
+
+  const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const text = (e.target as HTMLElement).textContent;
+    if (text === "Order Book" || text === "Recent Trades") setActiveTab(text);
+  };
+
   return (
-    <div className="order">
-      <div className="order_tabs">
-        <div className="order_tab order_tab--active">Order Book</div>
-        <div className="order_tab">Recent Trades</div>
-      </div>
+    <div className={`${mobile ? "order_mobile" : "order"} ${className}`}>
+      {!mobile && (
+        <div onClick={handleClick} className="order_tabs">
+          <div
+            className={`order_tab ${
+              activeTab === "Order Book" ? "order_tab--active" : ""
+            }`}
+          >
+            Order Book
+          </div>
 
-      <div className="order_toggles">
-        <div
-          onClick={() => setShow("both")}
-          className={`order_toggle ${
-            show === "both" ? "order_toggle--active" : ""
-          } `}
-        >
-          <img src={buySell} alt="filter buy and sell" />
+          <div
+            onClick={handleClick}
+            className={`order_tab ${
+              activeTab === "Recent Trades" ? "order_tab--active" : ""
+            }`}
+          >
+            Recent Trades
+          </div>
         </div>
+      )}
 
-        <div
-          onClick={() => setShow("buy")}
-          className={`order_toggle ${
-            show === "buy" ? "order_toggle--active" : ""
-          } `}
-        >
-          <img src={buyOnly} alt="filter buy" />
-        </div>
+      {activeTab === "Order Book" && (
+        <>
+          <div className="order_toggles">
+            <div
+              onClick={() => setShow("both")}
+              className={`order_toggle ${
+                show === "both" ? "order_toggle--active" : ""
+              } `}
+            >
+              <img src={buySell} alt="filter buy and sell" />
+            </div>
 
-        <div
-          onClick={() => setShow("sell")}
-          className={`order_toggle ${
-            show === "sell" ? "order_toggle--active" : ""
-          } `}
-        >
-          <img src={sellOnly} alt="filter sell" />
-        </div>
+            <div
+              onClick={() => setShow("buy")}
+              className={`order_toggle ${
+                show === "buy" ? "order_toggle--active" : ""
+              } `}
+            >
+              <img src={buyOnly} alt="filter buy" />
+            </div>
 
-        <div className="order_dropdown">
-          10
-          <img src={down} alt="caret down" />
-        </div>
-      </div>
+            <div
+              onClick={() => setShow("sell")}
+              className={`order_toggle ${
+                show === "sell" ? "order_toggle--active" : ""
+              } `}
+            >
+              <img src={sellOnly} alt="filter sell" />
+            </div>
 
-      <OrderBookTable show={show} />
+            <div className="order_dropdown">
+              10
+              <img src={down} alt="caret down" />
+            </div>
+          </div>
+
+          <OrderBookTable show={show} />
+        </>
+      )}
     </div>
   );
 };

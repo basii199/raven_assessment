@@ -1,7 +1,7 @@
 .order {
   display: flex;
   flex-direction: column;
-  width: 245px;
+  width: 255px;
   background: var(--color-section);
   padding: 8px;
   border-radius: 10px;
@@ -10,9 +10,12 @@
 .order_tabs {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 2px;
   background: var(--color-background);
   border-radius: 10px;
+  font-size: 12px;
+  text-wrap: nowrap;
 }
 
 .order_tab {
@@ -56,4 +59,14 @@
   margin-left: auto;
   background-color: #353945;
   font-size: 12px;
+}
+
+.order_mobile {
+  padding-inline: 100px;
+}
+
+@media (max-width: 700px) {
+  .order_mobile {
+    padding-inline: 10px;
+  }
 }

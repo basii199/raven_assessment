@@ -1,0 +1,51 @@
+.orders_vr {
+  height: 20px;
+  margin: 0;
+}
+
+.orders-area {
+  width: 100%;
+  height: 561px;
+  background: var(--color-section);
+}
+
+.orders-area_scroll-wrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.orders-area_tabs-container {
+  width: fit-content;
+}
+
+.orders-area_tabs {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.orders-area_tab {
+  padding-inline: 30px;
+}
+
+.orders-area_content {
+  max-width: 378px;
+  margin: auto;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  padding-inline: 10px;
+}
+
+.orders-area_content-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin: 0;
+  color: var(--color-foreground);
+}
+
+.orders-area_content-description {
+  font-size: 15px;
+}
