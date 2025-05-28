@@ -1,0 +1,32 @@
+.bs {
+  width: 255px;
+}
+
+.bs_active--green {
+  border: 1px solid var(--color-green);
+}
+
+.bs_active--red {
+  border: 1px solid var(--color-red);
+}
+
+.bs_tabs {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  margin-block: 16px;
+}
+
+.bs_tab {
+  font-size: 14px;
+  padding: 6px 12px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+
+.bs_tab--active {
+  background-color: #353945;
+  font-weight: 500;
+  color: var(--color-foreground);
+}

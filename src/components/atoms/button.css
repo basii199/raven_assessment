@@ -3,21 +3,28 @@
   font-size: 14px;
   padding: 8px;
   border-radius: 8px;
+  border: 0;
   color: white;
 }
 
 .button--green {
   background: var(--color-green);
+  height: 32px;
 }
 
 .button--red {
   background: var(--color-red);
+  height: 32px;
 }
 
 .button--blue {
   background: var(--color-blue);
+  height: 40px;
+  width: 80px;
+  margin-block: 12px;
 }
 
 .button--gradient {
   background: var(--color-gradient);
+  height: 40px;
 }

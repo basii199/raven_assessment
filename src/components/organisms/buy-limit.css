@@ -1,0 +1,42 @@
+.buy-limit {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 12px;
+}
+
+.buy-limit input[type="checkbox"] {
+  accent-color: var(--color-blue);
+}
+
+.buy-limit_group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.buy-limit_group--between {
+  justify-content: space-between;
+}
+
+.buy-limit_group--column {
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100px;
+}
+
+.buy-limit_group p {
+  margin: 0;
+}
+
+.buy-limit_value {
+  font-size: 14px;
+  color: var(--color-foreground);
+  font-weight: 700;
+}
+
+.vr--horizontal {
+  width: 100%;
+  height: 1px;
+  margin: 0;
+}
