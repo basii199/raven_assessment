@@ -25,7 +25,12 @@ const Menu = () => {
       </div>
 
       {dropdownOpen && (
-        <div onClick={() => setDropdownOpen(false)} className="menu-backdrop" />
+        <div
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setDropdownOpen(false);
+          }}
+          className="menu-backdrop"
+        />
       )}
     </>
   );

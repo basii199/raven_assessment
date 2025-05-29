@@ -10,7 +10,6 @@ import { useEffect, useState } from "react";
 
 const ExchangePage = () => {
   const [isMobile, setIsMobile] = useState(false);
-  console.log(isMobile);
 
   useEffect(() => {
     const handleResize = () => {

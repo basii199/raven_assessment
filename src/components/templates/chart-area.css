@@ -1,0 +1,40 @@
+.chart_container {
+  height: 561px;
+  background-color: var(--color-section);
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+.chart_tabs {
+  overflow-x: auto;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  height: 64px;
+  width: 450px;
+}
+
+.chart_tab--active {
+  background-color: #555c63;
+  padding: 6px 12px;
+  color: var(--color-foreground);
+  border-radius: 100px;
+}
+
+.chart_tabs--mobile {
+  width: 100%;
+}
+
+.chart_tab {
+  padding: 8px 12px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.chart_vr {
+  margin: 0;
+  height: 25px;
+}

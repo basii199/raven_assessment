@@ -9,7 +9,7 @@ import Button from "../atoms/button";
 const MobileLayout = ({ hidden }: { hidden?: boolean }) => {
   type Tabs = "Charts" | "Order Book" | "Recent Trades";
 
-  const [activeTab, setActiveTab] = useState<Tabs>("Order Book");
+  const [activeTab, setActiveTab] = useState<Tabs>("Charts");
   const [openBuy, setOpenBuy] = useState(false);
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -51,7 +51,7 @@ const MobileLayout = ({ hidden }: { hidden?: boolean }) => {
             Recent Trades
           </div>
         </div>
-        {activeTab === "Charts" && <ChartArea />}
+        {activeTab === "Charts" && <ChartArea mobile />}
         {activeTab === "Order Book" && <OrderBook mobile />}
       </div>
       <OrdersArea />
@@ -76,7 +76,9 @@ const MobileLayout = ({ hidden }: { hidden?: boolean }) => {
 
       {openBuy && (
         <div
-          onClick={() => setOpenBuy(false)}
+          onClick={(e) => {
+            if (e.target === e.currentTarget) setOpenBuy(false);
+          }}
           className="mobile-layout--backdrop"
         >
           <div className="mobile-layout--overlay">
