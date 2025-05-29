@@ -19,7 +19,6 @@
 
 .chart_tab--active {
   background-color: #555c63;
-  padding: 6px 12px;
   color: var(--color-foreground);
   border-radius: 100px;
 }
@@ -32,6 +31,7 @@
   padding: 8px 12px;
   flex-shrink: 0;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .chart_vr {

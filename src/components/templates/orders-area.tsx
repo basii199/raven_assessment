@@ -7,9 +7,9 @@ const OrdersArea = () => {
 
   return (
     <div className="orders-area">
-      <div className="orders-area_scroll-wrapper">
+      <div className="orders-area_scroll-wrapper hide-scrollbar">
         <div className="order orders-area_tabs-container">
-          <div className="order_tabs orders-area_tabs">
+          <div className="order_tabs orders-area_tabs ">
             <div
               onClick={() => setActiveTab("Open Orders")}
               className={`order_tab orders-area_tab ${
