@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./mobile-menu.css";
 import menu from "/menu.svg";
 import { useState } from "react";
@@ -17,9 +18,15 @@ const Menu = () => {
             dropdownOpen ? "" : "menu-dropdown--hidden"
           }`}
         >
-          <button className="dropdown-item">Exchange</button>
-          <button className="dropdown-item">Wallets</button>
-          <button className="dropdown-item">Roqqu Hub</button>
+          <Link to={"/"} className="dropdown-item">
+            Exchange
+          </Link>
+          <Link to={"/wallets"} className="dropdown-item">
+            Wallets
+          </Link>
+          <Link to={"/roqqu-hub"} className="dropdown-item">
+            Roqqu Hub
+          </Link>
           <button className="dropdown-item">Log out</button>
         </div>
       </div>

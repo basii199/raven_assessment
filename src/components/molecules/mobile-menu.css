@@ -46,6 +46,7 @@
   padding: 13px 16px;
   cursor: pointer;
   transition: all 0.3s;
+  text-decoration: none;
 }
 
 .dropdown-item:hover {

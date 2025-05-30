@@ -7,6 +7,7 @@
   color: var(--color-secondary);
   font-size: 14px;
   text-wrap: nowrap;
+  text-decoration: none;
 }
 
 .nav .nav_text--active {

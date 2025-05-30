@@ -1,11 +1,27 @@
+import { Link, useLocation } from "react-router-dom";
 import "./nav.css";
 
 const NavTabs = () => {
+  const location = useLocation().pathname;
+
+  const getActive = (tab: string) => {
+    if (tab === "") {
+      return location === "/" ? "nav_text--active" : "";
+    }
+    return location.includes(tab) ? "nav_text--active" : "";
+  };
+
   return (
     <div className="nav">
-      <p className="nav_text nav_text--active">Exchange</p>
-      <p className="nav_text">Wallets</p>
-      <p className="nav_text">Roqqu Hub</p>
+      <Link to={"/"} className={`nav_text ${getActive("")} `}>
+        Exchange
+      </Link>
+      <Link to={"/wallets"} className={`nav_text ${getActive("wallets")} `}>
+        Wallets
+      </Link>
+      <Link to={"/roqqu-hub"} className={`nav_text ${getActive("roqqu-hub")} `}>
+        Roqqu Hub
+      </Link>
     </div>
   );
 };
