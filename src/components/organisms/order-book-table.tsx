@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import BuySection from "../molecules/buy-section";
 import SellSection from "../molecules/sell-section";
 import "./order-book-table.css";
+import { useCoinContext } from "@/context/coin-context";
 
 export type Display = "both" | "buy" | "sell";
 
@@ -23,9 +24,10 @@ type OrderBook = {
 const OrderBookTable = ({ show }: TableProps) => {
   const [orderBook, setOrderBook] = useState<OrderBook>();
 
+  const { symbol } = useCoinContext();
+
   useEffect(() => {
     const fetchOrderBook = async () => {
-      const symbol = "BTCUSDT";
       const limit = 5;
 
       const res = await fetch(
@@ -54,7 +56,7 @@ const OrderBookTable = ({ show }: TableProps) => {
     };
 
     fetchOrderBook();
-  }, []);
+  }, [symbol]);
 
   return (
     <div>

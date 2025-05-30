@@ -3,6 +3,7 @@ import VR from "../atoms/vertical-rule";
 import CoinInfo from "../molecules/coin-info";
 import CoinPair from "../molecules/coin-pair";
 import { useEffect, useState } from "react";
+import { useCoinContext } from "@/context/coin-context";
 
 export type TickerStats = {
   priceChange: number;
@@ -24,11 +25,10 @@ const MarketInfo = () => {
     volume: 0,
     quoteVolume: 0,
   });
+  const { symbol } = useCoinContext();
 
   useEffect(() => {
     const fetchTickerStats = async () => {
-      const symbol = "BTCUSDT";
-
       const res = await fetch(
         `https://api.binance.com/api/v3/ticker/24hr?symbol=${symbol}`
       );
@@ -48,7 +48,7 @@ const MarketInfo = () => {
     };
 
     fetchTickerStats();
-  }, []);
+  }, [symbol]);
 
   return (
     <div className="market-info">

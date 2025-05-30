@@ -81,7 +81,7 @@ const MobileLayout = ({ hidden }: { hidden?: boolean }) => {
           }}
           className="mobile-layout--backdrop"
         >
-          <div className="mobile-layout--overlay">
+          <div className="mobile-layout--overlay hide-scrollbar">
             <BuyAndSell mobile />
           </div>
         </div>

@@ -7,6 +7,7 @@ import redo from "/redo.svg";
 import { useEffect, useRef, useState } from "react";
 import { type CandlestickData } from "lightweight-charts";
 import Chart from "../organisms/chart";
+import { useCoinContext } from "@/context/coin-context";
 
 type Kline = [
   number,
@@ -33,10 +34,12 @@ const ChartArea = ({ mobile }: { mobile?: boolean }) => {
   const [data, setData] = useState<Extended[]>([]);
   const [interval, setInterval] = useState<string>("1d");
 
+  const { symbol } = useCoinContext();
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await fetch(
-        `https://api.binance.com/api/v3/klines?symbol=BTCUSDT&interval=${interval}&limit=500`
+        `https://api.binance.com/api/v3/klines?symbol=${symbol}&interval=${interval}&limit=500`
       );
       const rawData = await res.json();
       const cleanData = rawData.map((entry: Kline) => {
@@ -52,7 +55,7 @@ const ChartArea = ({ mobile }: { mobile?: boolean }) => {
       setData(cleanData);
     };
     fetchData();
-  }, [interval]);
+  }, [interval, symbol]);
 
   useEffect(() => {
     const handleResize = () => {
