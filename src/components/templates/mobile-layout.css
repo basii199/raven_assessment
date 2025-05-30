@@ -16,6 +16,7 @@
 .mobile-layout--backdrop {
   position: fixed;
   inset: 0;
+  z-index: 5;
   background-color: rgba(255, 255, 255, 0.1);
 }
 
@@ -44,7 +45,7 @@
   left: 50%;
   transform: translateX(-50%);
   background-color: #262b31;
-  z-index: 1;
+  z-index: 3;
 }
 
 .bs-button {

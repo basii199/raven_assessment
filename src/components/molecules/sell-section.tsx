@@ -1,46 +1,35 @@
-const sellData = [
-  {
-    price: 36920.12,
-    amount: 0.758965,
-    total: 28020.98,
-    overlay: 45,
-  },
-  {
-    price: 36920.12,
-    amount: 0.758965,
-    total: 28020.98,
-    overlay: 0,
-  },
-  {
-    price: 36920.12,
-    amount: 0.758965,
-    total: 28020.98,
-    overlay: 60,
-  },
-  {
-    price: 36920.12,
-    amount: 0.758965,
-    total: 28020.98,
-    overlay: 0,
-  },
-  {
-    price: 36920.12,
-    amount: 0.758965,
-    total: 28020.98,
-    overlay: 100,
-  },
-];
+import { formatPrice } from "@/utils/numberFormats";
+import type { OrderBookSet } from "../organisms/order-book-table";
 
-const SellSection = () => {
+export type SectionProps = {
+  data?: OrderBookSet[]; // array or undefined
+};
+
+const SellSection = ({ data }: SectionProps) => {
+  if (!data) return <div>Load...</div>;
+
+  const maxTotal = Math.max(...data.map((item) => item.total));
+
+  const sellData = data.map((item) => ({
+    price: formatPrice(item.price),
+    quantity: item.quantity,
+    total: formatPrice(item.total),
+    overlay: (item.total / maxTotal) * 100,
+  }));
+
   return (
     <>
-      {sellData.map(({ price, amount, total, overlay }, index) => {
+      {sellData.map(({ price, quantity, total, overlay }, index) => {
         const position = 100 - overlay;
         return (
           <tr className="table_row--body" key={index}>
             <td className="table_cell--body table_cell--red">{price}</td>
-            <td className="table_cell--body">{amount}</td>
-            <td className="table_cell--body">{total}</td>
+            <td className="table_cell--body table_cell--body--right">
+              {quantity}
+            </td>
+            <td className="table_cell--body table_cell--body--right">
+              {total}
+            </td>
 
             <div
               style={{ left: `${position}%` }}

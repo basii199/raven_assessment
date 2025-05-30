@@ -1,13 +1,61 @@
+import { useEffect, useState } from "react";
 import BuySection from "../molecules/buy-section";
 import SellSection from "../molecules/sell-section";
 import "./order-book-table.css";
 
 export type Display = "both" | "buy" | "sell";
-interface TableProps {
+
+type TableProps = {
   show: Display;
-}
+};
+
+export type OrderBookSet = {
+  price: number;
+  quantity: number;
+  total: number;
+};
+
+type OrderBook = {
+  bids: OrderBookSet[];
+  asks: OrderBookSet[];
+};
 
 const OrderBookTable = ({ show }: TableProps) => {
+  const [orderBook, setOrderBook] = useState<OrderBook>();
+
+  useEffect(() => {
+    const fetchOrderBook = async () => {
+      const symbol = "BTCUSDT";
+      const limit = 5;
+
+      const res = await fetch(
+        `https://api.binance.com/api/v3/depth?symbol=${symbol}&limit=${limit}`
+      );
+      const data = await res.json();
+
+      const formatted = {
+        bids: data.bids.map(
+          ([price, qty]: [string, string]): OrderBookSet => ({
+            price: Number(price),
+            quantity: Number(qty),
+            total: Number(price) * Number(qty),
+          })
+        ),
+        asks: data.asks.map(
+          ([price, qty]: [string, string]): OrderBookSet => ({
+            price: Number(price),
+            quantity: Number(qty),
+            total: Number(price) * Number(qty),
+          })
+        ),
+      };
+
+      setOrderBook(formatted);
+    };
+
+    fetchOrderBook();
+  }, []);
+
   return (
     <div>
       <table className="table">
@@ -31,8 +79,12 @@ const OrderBookTable = ({ show }: TableProps) => {
           </tr>
         </thead>
         <tbody>
-          {(show === "both" || show === "sell") && <SellSection />}
-          {(show === "both" || show === "buy") && <BuySection />}
+          {(show === "both" || show === "sell") && (
+            <SellSection data={orderBook?.asks} />
+          )}
+          {(show === "both" || show === "buy") && (
+            <BuySection data={orderBook?.bids} />
+          )}
         </tbody>
       </table>
     </div>

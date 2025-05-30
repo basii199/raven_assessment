@@ -32,6 +32,10 @@
   position: relative;
 }
 
+.table_cell--body--right {
+  text-align: right;
+}
+
 .table_cell--red {
   color: var(--color-red);
 }

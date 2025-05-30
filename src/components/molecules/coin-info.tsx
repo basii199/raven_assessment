@@ -5,34 +5,53 @@ import arrowUp from "/arrow-up.svg";
 import arrowDown from "/arrow-down.svg";
 import chart from "/chart.svg";
 import React from "react";
+import type { TickerStats } from "../organisms/market-info";
+import { formatPrice, formatPercent } from "@/utils/numberFormats";
 
-const data = [
-  {
-    imgUrl: clock,
-    label: "24h change",
-    value: "520.80 +1.25%",
-  },
-  {
-    imgUrl: arrowUp,
-    label: "24h high",
-    value: "520.80 +1.25%",
-  },
-  {
-    imgUrl: arrowDown,
-    label: "24h low",
-    value: "520.80 +1.25%",
-  },
-  {
-    imgUrl: chart,
-    label: "24h volume",
-    value: "75,655.26",
-  },
-];
+const CoinInfo = ({ tickerStats }: { tickerStats: TickerStats }) => {
+  const {
+    priceChange,
+    priceChangePercent,
+    highPrice,
+    lowPrice,
+    lastPrice,
+    volume,
+  } = tickerStats;
 
-const CoinInfo = () => {
+  function calculateFormattedPriceChange(
+    price: number,
+    lastPrice: number
+  ): string {
+    const priceDiffPercent = ((price - lastPrice) / lastPrice) * 100;
+    return `${formatPrice(price)} ${formatPercent(priceDiffPercent)}`;
+  }
+
+  const sections = [
+    {
+      imgUrl: clock,
+      label: "24h change",
+      value: `${Math.abs(priceChange)} ${formatPercent(priceChangePercent)}`,
+    },
+    {
+      imgUrl: arrowUp,
+      label: "24h high",
+      value: calculateFormattedPriceChange(highPrice, lastPrice),
+    },
+    {
+      imgUrl: arrowDown,
+      label: "24h low",
+      value: calculateFormattedPriceChange(lowPrice, lastPrice),
+    },
+    {
+      imgUrl: chart,
+      label: "24h volume",
+      value: `${formatPrice(volume)}`,
+    },
+  ];
+
   return (
     <div className="info hide-scrollbar">
-      {data.map(({ imgUrl, label, value }, index) => (
+      {sections.map(({ imgUrl, label, value }, index) => (
         <React.Fragment key={index}>
           <div className="info_group">
             <div className="info_sub">
@@ -48,7 +67,7 @@ const CoinInfo = () => {
               {value}
             </p>
           </div>
-          {index !== data.length - 1 && <VR />}
+          {index !== sections.length - 1 && <VR />}
         </React.Fragment>
       ))}
     </div>
