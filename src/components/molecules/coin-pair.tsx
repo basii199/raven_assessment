@@ -7,6 +7,23 @@ import CoinsList from "./coin-list";
 import { useState, useEffect } from "react";
 import { useCoinContext } from "@/context/coin-context";
 
+const popularPairs = [
+  "BTC/USDT",
+  "ETH/USDT",
+  "BTC/ETH",
+  "BNB/USDT",
+  "DOGE/USDT",
+  "XRP/USDT",
+  "ADA/USDT",
+  "SOL/USDT",
+  "LTC/USDT",
+  "AVAX/USDT",
+  "DOT/USDT",
+  "MATIC/USDT",
+  "UNI/USDT",
+  "LINK/USDT",
+];
+
 interface Market {
   baseAsset: string;
   quoteAsset: string;
@@ -42,6 +59,7 @@ const CoinPair = ({ tickerStats }: { tickerStats: TickerStats }) => {
   const [error, setError] = useState<string | null>(null);
 
   const { lastPrice } = tickerStats;
+  const { updateSymbol } = useCoinContext();
 
   useEffect(() => {
     const fetchMarketData = async () => {
@@ -55,11 +73,12 @@ const CoinPair = ({ tickerStats }: { tickerStats: TickerStats }) => {
         const exchangeInfo: ExchangeInfo = await exchangeRes.json();
         const tickerData: TickerData[] = await tickerRes.json();
 
-        const usdtMarkets = exchangeInfo.symbols.filter(
-          (s) => s.quoteAsset === "USDT" && s.status === "TRADING"
-        );
+        const filteredMarkets = exchangeInfo.symbols.filter((symbol) => {
+          const pair = `${symbol.baseAsset}/${symbol.quoteAsset}`;
+          return popularPairs.includes(pair) && symbol.status === "TRADING";
+        });
 
-        const merged = usdtMarkets.slice(0, 10).map((symbol) => {
+        const merged = filteredMarkets.map((symbol) => {
           const ticker = tickerData.find((t) => t.symbol === symbol.symbol);
           return {
             baseAsset: symbol.baseAsset,
@@ -84,15 +103,11 @@ const CoinPair = ({ tickerStats }: { tickerStats: TickerStats }) => {
     fetchMarketData();
   }, []);
 
-  const { updateSymbol } = useCoinContext();
-
   const handleCoinUpdate = (symbol: string) => {
     setCoin(symbol);
-    const test = symbol
-      .split("")
-      .filter((str) => str !== "/")
-      .join("");
-    updateSymbol(test);
+    const cleanSymbol = symbol.split("/").join("");
+    updateSymbol(cleanSymbol);
+    setListOpen(false);
   };
 
   return (
@@ -106,12 +121,7 @@ const CoinPair = ({ tickerStats }: { tickerStats: TickerStats }) => {
 
       <p className="coin_label">{coin}</p>
 
-      <div
-        onClick={() => {
-          setListOpen(!listOpen);
-        }}
-        className="coin_toggle"
-      >
+      <div onClick={() => setListOpen(!listOpen)} className="coin_toggle">
         <img className="coin_caret" src={down} alt="caret down" />
       </div>
 
@@ -129,9 +139,7 @@ const CoinPair = ({ tickerStats }: { tickerStats: TickerStats }) => {
             />
           </div>
           <div
-            onClick={(e) => {
-              if (e.target === e.currentTarget) setListOpen(false);
-            }}
+            onClick={(e) => e.target === e.currentTarget && setListOpen(false)}
             className="coin_backdrop"
           ></div>
         </>
